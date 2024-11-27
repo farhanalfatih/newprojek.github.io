@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Menggunakan rgba untuk transparansi */
+        color: rgb(27, 26, 26);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-menu li {
+        display: inline;
+    }
+
+    .nav-menu a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+    }
+
+    .menu-icon {
+        display: none;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            /* Tinggi navbar */
+            left: 0;
+            background-color: #ffffff;
+            width: 100%;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .menu-icon {
+            display: block;
+        }
+    }
+
+    body {
+        font-family: "Roboto", sans-serif;
+        font-weight: 900;
+        font-style: italic;
+    }
+
+    section {
+        padding: 100px 20px;
+        min-height: 100vh;
+    }
+
+    #home h1 {
+        font-size: 34px;
+    }
+
+
+    .main-home {
+        position: relative;
+        top: -50px;
+        margin: 150px;
+        display: inline-block;
+        /* Agar bisa berada sejajar dengan container-kanan */
+        vertical-align: top;
+        /* Agar posisi vertikal lebih baik */
+    }
+
+    .container-kanan {
+        display: inline-block;
+        /* Agar berada di sebelah main-home */
+        vertical-align: top;
+        /* Agar posisi vertikal lebih baik */
+        margin-left: 20px;
+        /* Jarak antara main-home dan container-kanan */
+    }
+
+    .home-img {
+        width: 350px;
+        /* Atur lebar gambar sesuai kebutuhan */
+        height: auto;
+        /* Pertahankan rasio aspek gambar */
+    }
+
+    .social-media {
+        display: flex;
+        gap: 15px;
+        /* Jarak antara ikon sosial media */
+        margin-top: -20px;
+        /* Jarak antara teks dan ikon sosial media */
+    }
+
+    .social-icon {
+        width: 40px;
+        /* Lebar ikon */
+        height: 40px;
+        /* Tinggi ikon */
+        border-radius: 50%;
+        /* Membuat ikon berbentuk bulat */
+        background-color: #ccc;
+        /* Warna latar belakang ikon, bisa disesuaikan */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        /* Menghilangkan garis bawah pada tautan */
+    }
+
+    .social-icon.facebook {
+        background-color: #3b5998;
+        /* Warna latar belakang untuk Facebook */
+    }
+
+    .social-icon.twitter {
+        background-color: #1da1f2;
+        /* Warna latar belakang untuk Twitter */
+    }
+
+    .social-icon.instagram {
+        background-color: #e1306c;
+        /* Warna latar belakang untuk Instagram */
+    }
+
+    .social-icon:hover {
+        transform: scale(1.1);
+        /* Membesarkan ikon sedikit saat dihover */
+        transition: transform 0.3s ease;
+        /* Menambahkan transisi halus */
+    }
+
+    .social-icon:hover i {
+        color: #ffffff;
+        /* Ubah warna ikon saat dihover */
+    }
+
+    .social-icon i {
+        color: rgb(255, 255, 255);
+        /* Warna ikon */
+        font-size: 20px;
+        /* Ukuran ikon */
+    }
+
+    /* tentang kami */
+
+    .Container-about h1 {
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        position: relative;
+        top: -50px;
+    }
+
+    .grid-container {
+        display: grid;
+        /* Menggunakan grid layout */
+        grid-template-columns: 40px 1fr;
+        /* Membuat dua kolom: satu untuk bulet dan satu untuk teks */
+        gap: 300px;
+        /* Jarak antara item grid */
+        margin: 20px;
+        /* Margin untuk keseluruhan grid */
+    }
+
+    .grid-item {
+        display: contents;
+        /* Menggunakan contents agar grid item tidak menambah container */
+    }
+
+    .bulet {
+        width: 40px;
+        /* Lebar bulet */
+        height: 40px;
+        /* Tinggi bulet */
+        border-radius: 50%;
+        /* Membuat bulet menjadi bulat */
+        background-color: #2200ff;
+        /* Warna latar belakang bulet */
+        box-shadow: 0 4px 8px rgba(52, 51, 51, 0.2);
+        /* Bayangan */
+    }
+
+    .grid-container p {
+        position: relative;
+        left: -100px;
+        color: white;
+        margin: 0;
+        /* Menghilangkan margin default dari paragraf */
+    }
+
+
+    /* FAQ */
+    .faq {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px 0;
+        overflow: hidden;
+    }
+
+    .accordion {
+        background-color: #000000;
+        color: #9e9e9e;
+        cursor: pointer;
+        padding: 15px;
+        text-align: left;
+        outline: none;
+        font-size: 16px;
+        border: none;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    .accordion:hover {
+        color: wheat;
+        background-color: #0517bd;
+    }
+
+    .panel {
+        color: white;
+        padding: 20px 15px;
+        display: none;
+        /* Awalnya disembunyikan */
+        overflow: hidden;
+        background-color: rgb(0, 0, 0);
+    }
+
+    .fa-chevron-down {
+        float: right;
+        transition: transform 0.3s;
+    }
+
+    .accordion.active .fa-chevron-down {
+        transform: rotate(180deg);
+        /* Memutar ikon ketika aktif */
+    }
+
+    /* PPDB panell */
+    .ppdb-panel {
+        display: none;
+        /* Sembunyikan panel secara default */
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 1000;
+        margin-top: 10px;
+        /* Jarak dari link PPDB */
+        padding: 10px;
+        opacity: 0;
+        /* Awalnya tidak terlihat */
+        transition: opacity 0.3s ease;
+        /* Animasi transisi */
+    }
+
+    .nav-item.active .ppdb-panel {
+        display: block;
+        /* Tampilkan panel saat link PPDB aktif */
+        opacity: 1;
+        /* Menjadikan panel terlihat */
+    }
+
+    .ppdb-panel a {
+        display: block;
+        /* Tampilkan link dalam baris baru */
+        color: black;
+        text-decoration: none;
+        padding: 5px 0;
+    }
+
+    .ppdb-panel a:hover {
+        color: blue;
+        /* Ubah warna saat hover pada link di panel */
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">smpn20</div>
+            <div class="menu-icon" id="menu-icon">
+                &#9776; <!-- Simbol burger -->
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang kami</a></li>
+                <li><a href="#bantuan">FAQ</a></li>
+                <li class="nav-item">
+                    <a href="#PPDB" class="ppdb-link">PPDB</a>
+                    <span class="fa-solid fa-chevron-down"></span> <!-- Ikon panah -->
+                    <div class="ppdb-panel">
+                        <a href="#info-ppdb">Info PPDB</a>
+                        <a href="#syarat-ppdb">Syarat PPDB</a>
+                        <a href="#pendaftaran-ppdb">Pendaftaran PPDB</a>
+                    </div>
+                </li>
+                <li><a href="#berita">Berita</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="main-home">
+            <h1> selamat datang, <br> smpn20 bandar lampung </h1>
+            <p style="position: relative; top: -20px;">"
+                TAMPIL"(TAQWA - ASRI - MANDIRI - PRESTASI -INOVATIF - LUGAS)
+            </p>
+            <div class="social-media">
+                <a href="#" class="social-icon facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-kanan">
+            <!-- saran saya ini kasih bagmbar anak-anak yang berpestasi  -->
+            <!-- <img class="home-img" src="imag/WhatsApp Image 2024-11-26 at 13.44.12_185553d0.jpg" alt=""> -->
+
+        </div>
+    </section>
+
+    <section id="about" style="background-color: rgb(40, 39, 39);">
+        <div class="Container-about">
+            <h1>Visi Misi & Tujuan </h1>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="bulet"></div>
+                <p>Deskripsi Visi Misi 1</p>
+            </div>
+            <div class="grid-item">
+                <div class="bulet"></div>
+                <p>Deskripsi Visi Misi 2</p>
+            </div>
+            <div class="grid-item">
+                <div class="bulet"></div>
+                <p>Deskripsi Visi Misi 3</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="PPDB"> 
+        <h1> PPDB </h1>
+    </section>
+
+    <section id="bantuan" style="display: flex;">
+        <div class="container-kiri" style="flex: 1; padding: 30px;">
+            <h1 style="margin: 20px;">Pertanyaan yang Sering Diajukan </h1>
+            <a href="no wa"><button class="gradient-button">
+                    <i class="fa-solid fa-phone"></i> konsultasi gratis sekarang
+                </button></a>
+        </div>
+        <div class="container-kanan" style="flex: 2; padding: 20px;">
+            <!-- ini akan disi dengan konten bantuan contoh nya pertanyaan dan jawaban -->
+
+            <div class="faq">
+                <button class="accordion">
+                    Apa itu FAQ?
+                    <li class="fa-solid fa-chevron-down"></li>
+                </button>
+                <div class="panel">
+                    <p>FAQ adalah singkatan dari Frequently Asked Questions, yang berarti daftar pertanyaan yang sering
+                        diajukan
+                        beserta jawabannya.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <button class="accordion">
+                    Mengapa FAQ penting?
+                    <li class="fa-solid fa-chevron-down"></li>
+                </button>
+                <div class="panel">
+                    <p>FAQ penting karena membantu pengguna menemukan informasi yang mereka butuhkan dengan cepat tanpa
+                        harus
+                        menghubungi dukungan pelanggan.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <button class="accordion">
+                    Bagaimana cara membuat FAQ?
+                    <li class="fa-solid fa-chevron-down"></li>
+                </button>
+                <div class="panel">
+                    <p>Untuk membuat FAQ, identifikasi pertanyaan yang sering diajukan oleh pengguna, berikan jawaban
+                        yang jelas
+                        dan ringkas, dan susun dalam format yang mudah dibaca.</p>
+                </div>
+            </div>
+
+            <div class="faq">
+                <button class="accordion">
+                    Di mana saya bisa menemukan FAQ?
+                    <li class="fa-solid fa-chevron-down"></li>
+                </button>
+                <div class="panel">
+                    <p>Anda dapat menemukan FAQ di situs web perusahaan, di bagian dukungan atau bantuan, atau di
+                        aplikasi yang
+                        Anda gunakan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita">
+        <h1> Berita terkini </h1>
+    </section>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
